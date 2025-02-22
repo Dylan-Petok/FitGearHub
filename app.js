@@ -39,7 +39,7 @@ app.use(
         secret: "ajfeirf90aeu9eroejfoefj",
         resave: false,
         saveUninitialized: false,
-        store: new MongoStore({mongoUrl: 'mongodb+srv://admin:admin123@cluster0.jiibq.mongodb.net/demos?retryWrites=true&w=majority&appName=Cluster0'}),
+        store: new MongoStore({mongoUrl: 'mongodb+srv://admin:admin123@cluster0.o4ifp.mongodb.net/Fitgear?retryWrites=true&w=majority&appName=Cluster0'}),
         cookie: {maxAge: 60*60*1000}
         })
 );
