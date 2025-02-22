@@ -1,0 +1,42 @@
+<%- include('../partials/header.ejs')%>
+
+    <div class="new-container">
+
+      <div class="new-desc">
+        <div>
+          <h2>Join FitGear Hub</h2>
+          <p>To buy and sell fitness items</p>
+        </div>
+      </div>
+      
+      <div class="new-input">
+        <form action="/user" method="POST">
+          <div class="mb-3">
+          </div>
+          <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" name="firstName" required>
+          </div>
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" name="lastName" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="details" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" required>
+          </div>
+          <div class="submit-btn-container">
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+          </div>
+
+        </form>
+      </div>
+
+  </div>
+  </div>
+
+<%- include('../partials/footer.ejs')%>

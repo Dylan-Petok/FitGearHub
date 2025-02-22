@@ -1,0 +1,43 @@
+<%- include('../partials/header.ejs')%>
+
+
+
+
+    <div class="index-container">
+      <% if (noResults) { %>
+        <p class="query-message">No items match your search. Displaying all active items.</p>
+      <% } %>
+
+    <div class="fitnessItemContainer">
+
+      <% items.forEach((item) => { %>
+      <a href="/fitnessitems/<%= item.id%>">
+        <div class="card" style="width: 18rem;">
+          <img src="<%= item.image%>" class="card-img-top prsnl" alt="...">
+          <div class="card-body">
+            <h5 class="card-title title-border"><%= item.title %></h5>
+            
+            <p class="card-text"><%= item.condition %></p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <span>$<%= item.price %></span>
+              <span>
+                <%= item.offers.length %> 
+                <%= item.offers.length === 1 ? 'Offer' : 'Offers' %>
+              </span>            
+            </li>
+                  
+          </ul>
+  </div>
+      </a>
+      <% }); %>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<%- include('../partials/footer.ejs')%>

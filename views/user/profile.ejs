@@ -1,0 +1,92 @@
+<%- include('../partials/header.ejs')%>
+
+<div class="profile-container">
+    
+  <div class=profile-listing>
+  <h1>My Listings</h1>
+<% if(fitnessItems.length > 0) {%>
+<div class="table-container">
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% fitnessItems.forEach(function(item) { %>
+        <tr>
+            <td><a href="/fitnessItems/<%= item._id %>" class="title-p"><%= item.title %></a></td>
+            <td><% if(item.active){ %>
+                <span>active</span>
+                <% } else {%>
+                <span>inactive</span>
+                <% } %>
+                </td>
+            <td class="profile-btn">
+              <div>
+                <a href="/fitnessItems/<%= item._id %>/edit" class="btn btn-primary profile">
+                  <i class="bi bi-pencil"></i>
+                </a>
+            </div>
+
+            <div>
+              <form action="/fitnessItems/<%= item._id %>?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-danger">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </form>
+            </div>
+
+            <div>
+              <form action="/fitnessItems/<%= item.id %>/offers" method="GET" style="display:inline;">
+                  <button type="submit" <% if(item.offers.length === 0){%> disabled <% } %> class="offer-btn-p">
+                  View Offers</button>
+              </form>
+          </div>
+            </td>
+        </tr>
+       <% }); %>
+    </tbody>
+  </table>
+
+</div>
+  <% } else { %>
+    <p class="profile-empty">You have made no listings!</p>
+    <% } %>
+</div>
+
+
+<div class="profile-offer">
+  <h1>My Offers</h1>
+<% if(offers.length > 0) {%>
+  <div class="table-container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Item</th>
+            <th scope="col">Status</th>
+            <th scope="col">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% offers.forEach(function(offer) { %>
+            <tr>
+                <td><a href="/fitnessItems/<%= offer.item._id %>" class="title-p"><%= offer.item.title %></a></td>
+                <td><%= offer.status %></td>
+                <td class="amount"><%= offer.amount %></td>
+            </tr>
+           <% }); %>
+        </tbody>
+      </table>
+    </div>
+      <% } else { %>
+        <p class="profile-empty">You have not made any offers!</p>
+        <% } %>
+    </div>
+  </div>
+
+
+</div>
+<%- include('../partials/footer.ejs')%>

@@ -1,0 +1,59 @@
+<%- include('../partials/header.ejs')%>
+
+
+    <div class="sell-item-container">
+
+      <div class="sell-item-desc">
+        <div>
+          <h2>Sell Your Items Quick And Easy</h2>
+          <p>On FitGear Hub all you have to do is mention a few things about your item, snap a picture and upload it then boom, its listed.</p>
+        </div>
+
+        <div>
+          <h2>Backed by our Protected Sellers Policy</h2>
+          <p>Here at FitGear Hub we have a Protected Sellers Policy that ensures a safe selling experience for those on our platform.</p>
+        </div>
+      </div>
+      
+      <div class="sell-item-input">
+        <form action="/fitnessItems" method="POST", enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="condition" class="form-label">Condition</label>
+            <select name="condition" required>
+              <option value="New">New</option>
+              <option value="Like New">Like New</option>
+              <option value="Used - Good">Used - Good</option>
+              <option value="Used - Fair">Used - Fair</option>
+              <option value="Used - Acceptable">Used - Acceptable</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" name="title" required>
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control" name="price" step="0.01" required>
+          </div>
+          <div class="mb-3">
+            <label for="details" class="form-label">Details</label>
+            <input type="text" class="form-control" name="details" required>
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input type="file" class="form-control" id="fileInput" name="image" aria-describedby="fileHelp">
+            <small id="fileHelp" class="form-text text-muted" name="image">Choose an image file to upload.</small>
+          </div>
+          <div class="submit-btn-container">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+
+        </form>
+      </div>
+
+  </div>
+  </div>
+
+
+
+<%- include('../partials/footer.ejs')%>

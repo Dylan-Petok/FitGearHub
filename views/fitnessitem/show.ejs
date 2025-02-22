@@ -1,0 +1,49 @@
+<%- include('../partials/header.ejs')%>
+
+    <div class="show-page">
+
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="<%= item.image %>" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title item"><%= item.title %></h5>
+            <p>Condition: <%= item.condition %></p>
+            <p>Price: $<%= item.price %> |
+              <%= item.offers.length %> 
+              <%= item.offers.length === 1 ? 'Offer' : 'Offers' %></p>
+            <p>Seller: <%= item.seller.firstName %> <%= item.seller.lastName %></p>
+            <small class="card-text"><%= item.details %></small>
+            
+            <div class="offer-show-container">
+              <% if(item.active) { %>
+              <div>
+                <form action="/fitnessItems/<%= item.id %>/offers/" method="POST">
+                  <input type="number" name="amount" min="1" step="0.01" required>
+                  <button type="submit">Make an Offer</button>
+                </form>
+              </div>
+  
+              <div class="offer-amount">
+                <p> <% if (item.offers.length > 0) { %> Current Highest Offer:
+                  <%= Math.max(...item.offers.map(offer => offer.amount)) %>
+                <% }  %>
+                </p>
+              </div>
+              <% } else { %>
+                <div class="offer-amount">Unfortunately, this item is no longer available</div>
+                <% }  %>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+
+<%- include('../partials/footer.ejs')%>

@@ -1,0 +1,66 @@
+<%- include('../partials/header.ejs')%>
+
+
+    <div class="sell-item-container">
+
+      <div class="sell-item-desc">
+        <div>
+          <h2>Editing Made Easy</h2>
+          <p>Just click on what part of your listing you would like to edit, and then submit! Its that simple</p>
+        </div>
+
+        <div>
+          <h2>Backed by our Protected Sellers Policy</h2>
+          <p>Here at FitGear Hub we have a Protected Sellers Policy that ensures a safe selling experience for those on our platform.</p>
+        </div>
+      </div>
+      
+      <div class="sell-item-input">
+        <form action="/fitnessItems/<%= item.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="condition" class="form-label">Condition</label>
+            <select name="condition" required>
+              <option value="New" <%= item.condition === 'New' ? 'selected' : '' %>>New</option>
+              <option value="Like New" <%= item.condition === 'Like New' ? 'selected' : '' %>>Like New</option>
+              <option value="Used - Good" <%= item.condition === 'Used - Good' ? 'selected' : '' %>>Used - Good</option>
+              <option value="Used - Fair" <%= item.condition === 'Used - Fair' ? 'selected' : '' %>>Used - Fair</option>
+              <option value="Used - Acceptable" <%= item.condition === 'Used - Acceptable' ? 'selected' : '' %>>Used - Acceptable</option>
+            </select>
+            
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" name="title" required value="<%= item.title %>">
+          </div>
+          <div class="mb-3">
+            <label for="seller" class="form-label">Seller</label>
+            <input type="text" class="form-control" name="seller" required value="<%= item.seller %>">
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="text" class="form-control" name="price" step="0.01" required value="<%= item.price %>">
+          </div>
+          <div class="mb-3">
+            <label for="details" class="form-label">Details</label>
+            <input type="text" class="form-control" name="details" required value="<%= item.details %>">
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">Current Image:</label>
+            <img src="<%= item.image %>" alt="Current Image" class="img-thumbnail" style="max-width: 70px;" style="max-height: 70px;">
+            <br><br>
+            <input type="file" class="form-control" id="fileInput" name="image" aria-describedby="fileHelp">
+            <small id="fileHelp" class="form-text text-muted">Choose an image file to upload.</small>
+          </div>
+          <div class="submit-btn-container">
+            <button type="submit" class="btn btn-primary">Update Listing</button>
+          </div>
+
+        </form>
+      </div>
+
+  </div>
+  </div>
+
+
+
+<%- include('../partials/footer.ejs')%>

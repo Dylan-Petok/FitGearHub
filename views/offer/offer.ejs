@@ -1,0 +1,42 @@
+<%- include('../partials/header.ejs')%>
+
+<div class="offer-page">
+
+  <div class="offer-page-container">
+        <div class="table-container offer">
+          <h1>
+            Offers For: <%= fitnessItem.title %>
+          </h1>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Buyer</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% fitnessItem.offers.forEach(function(offer) { %>
+                    <tr>
+                        <td><%= offer.buyer.firstName %></td>
+                        <td>$<%= offer.amount %></td>
+                      <form action="/fitnessItems/<%= fitnessItem._id %>/offers/<%= offer._id %>" method="GET">
+                        <% if (fitnessItem.active){ %>
+                          <td><button type="submit" class="offer-btn-p">Accept</button></td>
+                        <% } else { %>
+                          <td><%= offer.status %></td>
+                          <% } %>
+                      </form>
+                    </tr>
+                   <% }); %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      </div>
+    
+      </div>
+
+
+<%- include('../partials/footer.ejs')%>
