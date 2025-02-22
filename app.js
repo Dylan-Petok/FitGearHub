@@ -19,8 +19,7 @@ const app = express();
 
 //server configuration
 // Server configuration using environment variables
-const port = process.env.PORT || 3000;
-const host = process.env.HOST || 'localhost';
+const port = process.env.PORT || 10000;
 const uri = process.env.MONGODB_URI;
 
 app.set('view engine', 'ejs');
@@ -29,7 +28,7 @@ app.set('view engine', 'ejs');
 mongoose.connect(uri)
 .then(() => {
     //start the server
-    app.listen(port, host, ()=>{
+    app.listen(port, '0.0.0.0', ()=>{
         console.log('Server is running on port', port);
     })
 })
