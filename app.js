@@ -1,3 +1,4 @@
+require('dotenv').config();
 // require express so we can create the express app. using express() function 
 const express = require('express');
 // require the fitnessItemRoutes to use for the app, using app.use() middleware function
@@ -17,9 +18,10 @@ const app = express();
 
 
 //server configuration
-let port = 3000;
-let host = 'localhost';
-const uri = 'mongodb+srv://admin:admin123@cluster0.o4ifp.mongodb.net/Fitgear?retryWrites=true&w=majority&appName=Cluster0'
+// Server configuration using environment variables
+const port = process.env.PORT || 3000;
+const host = process.env.HOST || 'localhost';
+const uri = process.env.MONGODB_URI;
 
 app.set('view engine', 'ejs');
 
@@ -36,10 +38,10 @@ mongoose.connect(uri)
 //mount middlewareapp.use(
 app.use(
     session({
-        secret: "ajfeirf90aeu9eroejfoefj",
+        secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
-        store: new MongoStore({mongoUrl: 'mongodb+srv://admin:admin123@cluster0.o4ifp.mongodb.net/Fitgear?retryWrites=true&w=majority&appName=Cluster0'}),
+        store: new MongoStore({mongoUrl: uri}),
         cookie: {maxAge: 60*60*1000}
         })
 );
